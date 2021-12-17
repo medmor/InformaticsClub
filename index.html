@@ -3,9 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Club Informatique</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+        function navigateToProject(project) {
+            window.location.href = './pages/' + project + '/index.html';
+        }
+
+    </script>
 </head>
 <body>
-    Le site des projets
-    
+    <header>
+        <div>
+          <b>Club Infromatique</b><br />
+          <hr color="black" />
+          <small>Les projets à réaliser</small>
+        </div>
+      </header>
+      <main>
+        <div class="card" onclick="navigateToProject('guess-the-number')">
+          <h1>Projet 1</h1>
+          <h2>Devinez le nombre</h2>
+        </div>
+        <div class="card">
+          <h1>Projet 2</h1>
+          <h2>Projet 2</h2>
+        </div>
+        <div class="card">
+          <h1>Projet 3</h1>
+          <h2>Projet 3</h2>
+        </div>
+        <div class="card">
+          <h1>Projet 4</h1>
+          <h2>Projet 4</h2>
+        </div>
+        <div class="card">
+          <h1>Projet 5</h1>
+          <h2>Projet 5</h2>
+        </div>
+        <div class="card">
+          <h1>Projet 6</h1>
+          <h2>Projet 6</h2>
+        </div>
+        <div class="card">
+          <h1>Projet 7</h1>
+          <h2>Projet 7</h2>
+        </div>
+        <div class="card">
+          <h1>Projet 8</h1>
+          <h2>Projet 8</h2>
+        </div>
+        <div class="card">
+          <h1>Projet 9</h1>
+          <h2>Projet 9</h2>
+        </div>
+      </main>
+      <footer>
+        <p>
+          &copy; Club Informatique<br />
+          Lycée Ibn Batouta<br />
+          AKLIM
+        </p>
+      </footer>
 </body>
 </html>
