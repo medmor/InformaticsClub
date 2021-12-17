@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div>
+      <button id="playButton" onclick="onPlayButtonClick(this)">Play</button>
+      <p id="message"></p>
+    </div>
+    <div
+      id="container"
+      onmousedown="onMouseDown(event)"
+      onmouseup="onMouseUp(event)"
+    >
+      <div
+        id="red"
+        class="cell"
+        onmouseenter="onMouseEnter(event)"
+        onmouseleave="onMouseLeave(event)"
+      ></div>
+      <div
+        id="green"
+        class="cell"
+        onmouseenter="onMouseEnter(event)"
+        onmouseleave="onMouseLeave(event)"
+      ></div>
+      <div
+        id="black"
+        class="cell"
+        onmouseenter="onMouseEnter(event)"
+        onmouseleave="onMouseLeave(event)"
+      ></div>
+      <div
+        id="blue"
+        class="cell"
+        onmouseenter="onMouseEnter(event)"
+        onmouseleave="onMouseLeave(event)"
+      ></div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

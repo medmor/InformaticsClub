@@ -1,0 +1,15 @@
+#container {
+  font-size: xx-large;
+  font-weight: bolder;
+  height: 300px;
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: darkorange;
+}
+#container div {
+  transform: translate(0, 50%);
+}
