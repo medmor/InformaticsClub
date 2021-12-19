@@ -5,13 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Club Informatique</title>
 		<link rel="stylesheet" href="styles.css" />
-		<script>
-			function navigateToProject(project) {
-				window.location.href = './projects/' + project + '/index.html';
-			}
-		</script>
 	</head>
 	<body>
+		<audio id="clickAudio">
+			<source src="./assets/audio/click.wav" type="audio/wav" />
+			Your browser does not support the audio element.
+		</audio>
 		<header>
 			<div>
 				<b>Club Infromatique</b><br />
@@ -62,5 +61,13 @@
 				AKLIM
 			</p>
 		</footer>
+		<script>
+			const clickAudio = document.getElementById('clickAudio');
+			function navigateToProject(project) {
+				//window.location.href = './projects/' + project + '/index.html';
+				console.log(clickAudio);
+				clickAudio.play();
+			}
+		</script>
 	</body>
 </html>
