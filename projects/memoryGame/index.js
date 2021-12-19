@@ -1,5 +1,10 @@
+const note1Audio = document.getElementById('note1Audio');
+const note2Audio = document.getElementById('note2Audio');
+const note3Audio = document.getElementById('note3Audio');
+const note4Audio = document.getElementById('note4Audio');
+const clickAudio = document.getElementById('clickAudio');
+const loseAudio = document.getElementById('loseAudio');
 const container = document.getElementById('container-game');
-
 const message = document.querySelector('#message');
 message.innerText = 'Cliquez sur le bouton "Jouer" pour commencer';
 
@@ -32,6 +37,7 @@ function playSequence(index) {
 		const color = choosedColors[index];
 		const div = document.getElementById(color);
 		div.classList.add('active');
+		playNote(color);
 		setTimeout(() => {
 			div.classList.remove('active');
 			setTimeout(() => {
@@ -47,6 +53,7 @@ function playSequence(index) {
 
 function onMouseDown(event) {
 	if (gameState === gameStates.playerTurn) {
+		playNote(event.target.id);
 		event.target.classList.add('active');
 		if (event.target.id !== choosedColors[playerClickIndex]) {
 			gameState = gameStates.gameOver;
@@ -83,6 +90,23 @@ function onMouseLeave(event) {
 }
 
 function onPlayButtonClick(button) {
+	clickAudio.play();
 	button.classList.add('hide');
 	chooseRandomColor();
+}
+
+function playNote(color) {
+	if (color === 'red') {
+		note1Audio.currentTime = 0;
+		note1Audio.play();
+	} else if (color === 'orange') {
+		note2Audio.currentTime = 0;
+		note2Audio.play();
+	} else if (color === 'green') {
+		note3Audio.currentTime = 0;
+		note3Audio.play();
+	} else if (color === 'blue') {
+		note4Audio.currentTime = 0;
+		note4Audio.play();
+	}
 }

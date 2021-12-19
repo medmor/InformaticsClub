@@ -1,3 +1,5 @@
+const clickAudio = document.getElementById('clickAudio');
+const wrongAudio = document.getElementById('wrongAudio');
 const input1 = document.getElementById('input1');
 const input2 = document.getElementById('input2');
 const resultInput = document.getElementById('result');
@@ -7,13 +9,16 @@ let a = undefined;
 let b = undefined;
 
 function onOperationClick(op) {
+	clickAudio.play();
 	a = parseFloat(input1.value);
 	b = parseFloat(input2.value);
 	if (Number.isNaN(a)) {
+		wrongAudio.play();
 		msg.innerText = 'Veuillez entrer a';
 		return;
 	}
 	if (Number.isNaN(b)) {
+		wrongAudio.play();
 		msg.innerText = 'Veuillez entrer b';
 		return;
 	}

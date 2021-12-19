@@ -1,13 +1,17 @@
+const clickAudio = document.getElementById('clickAudio');
+const wrongAudio = document.getElementById('wrongAudio');
+const tadaAudio = document.getElementById('tadaAudio');
 const container = document.getElementById('container-game');
+const errorsElement = document.getElementById('errors');
+const containerWidth = 250;
 let firstCard = null;
 let secondCard = null;
-const containerWidth = 250;
-const errorsElement = document.getElementById('errors');
 let errors = 0;
 
 initGrid();
 
 function initGrid(cardNumbers = 4) {
+	clickAudio.play();
 	resetTimer();
 	startTimer();
 	sqrtCardNumbers = Math.sqrt(cardNumbers);
@@ -49,14 +53,17 @@ function initGrid(cardNumbers = 4) {
 function onClick(e) {
 	if (e.target.classList.contains('mask')) {
 		if (firstCard === null) {
+			clickAudio.play();
 			e.target.classList.add('hide');
 			firstCard = e.target.parentNode;
 		} else if (secondCard === null) {
 			e.target.classList.add('hide');
 			secondCard = e.target.parentNode;
 			if (firstCard.dataset.index === secondCard.dataset.index) {
+				tadaAudio.play();
 				reNullCards();
 			} else {
+				wrongAudio.play();
 				const mask1 = firstCard.firstChild.nextSibling;
 				const mask2 = secondCard.firstChild.nextSibling;
 				errors++;

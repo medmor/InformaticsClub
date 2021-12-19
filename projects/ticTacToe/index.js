@@ -1,6 +1,9 @@
+const clickAudio = document.getElementById('clickAudio');
+const tadaAudio = document.getElementById('tadaAudio');
+const loseAudio = document.getElementById('loseAudio');
+const msg = document.getElementById('msg');
 const table = document.getElementById('container-game');
 const rows = table.rows;
-const msg = document.getElementById('msg');
 let gameEnded = false;
 
 const board = [
@@ -19,6 +22,7 @@ if (!isPlayerTurn) {
 
 function cellClick(e) {
 	if (!gameEnded) {
+		clickAudio.play();
 		if (isPlayerTurn) {
 			const firstChild = e.firstChild;
 			if (!firstChild.innerText) {
@@ -29,6 +33,7 @@ function cellClick(e) {
 				if (isWining('o')) {
 					gameEnded = true;
 					msg.innerText = 'Bravo; Vous avez gagné';
+					tadaAudio.play();
 					return;
 				}
 				isPlayerTurn = false;
@@ -42,6 +47,7 @@ function cellClick(e) {
 }
 
 function computerPlay() {
+	clickAudio.play();
 	for (const row of rows) {
 		const cells = row.cells;
 		for (const cell of cells) {
@@ -53,6 +59,7 @@ function computerPlay() {
 				if (isWining('x')) {
 					gameEnded = true;
 					msg.innerText = 'Dommage; Vous avez perdu';
+					loseAudio.play();
 					return;
 				}
 				msg.innerText = 'Veuillez jouer votre tour';
