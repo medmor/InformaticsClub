@@ -1,59 +1,74 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: monospace;
+	margin: 0;
+	padding: 0;
+	font-family: monospace;
 }
 header {
-  position: relative;
-  min-height: 50vh;
-  background-color: orange;
+	position: relative;
+	min-height: 35vh;
+	background-color: orange;
 }
 header div {
-  font-size: 5vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+	font-size: 5vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
 }
 main {
-  padding: 5%;
-  display: grid;
-  grid-template-columns: 31% 31% 31%;
-  grid-gap: 3%;
-  background-color: black;
-  min-height: 50vh;
+	position: relative;
+	min-height: 55vh !important;
+	padding: 5%;
+	background-color: black;
+}
+.projects-grid {
+	display: grid;
+	grid-template-columns: 31% 31% 31%;
+	grid-gap: 3%;
+}
+#container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	min-width: 75%;
+	transform: translate(-50%, -50%);
+	padding: 2%;
+	text-align: center;
 }
 footer {
-  background-color: orange;
-  padding: 10px;
-  text-align: right;
-  font-weight: bolder;
+	background-color: orange;
+	padding: 10px;
+	text-align: right;
+	font-weight: bolder;
 }
 
 .card {
-  color: white;
-  box-shadow: 1px 1px 5px maroon;
-  padding: 5px 10px;
-  cursor: pointer;
-  user-select: none;
+	color: white;
+	box-shadow: 1px 1px 5px maroon;
+	padding: 10px 15px;
+	user-select: none;
 }
-.card:hover {
-  background-color: rgb(27, 7, 7);
+.btn {
+	cursor: pointer;
+	background-color: black;
 }
-.card:active {
-  background-color: rgb(129, 87, 7);
+.btn:hover {
+	background-color: rgb(27, 7, 7);
+}
+.btn:active {
+	background-color: rgb(129, 87, 7);
 }
 .card h1 {
-  margin: 0;
+	margin: 0;
 }
 
-@media (max-width: 768px) {
-  main {
-    display: block;
-  }
-  .card {
-    margin-bottom: 15px;
-  }
+@media (max-width: 760px) {
+	.projects-grid {
+		display: block;
+	}
+	.card {
+		margin-bottom: 25px;
+	}
 }

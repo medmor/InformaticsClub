@@ -1,17 +1,31 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <div id="container">
-      <div>
-        <p id="label">0</p>
-      </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Compteur de clics</title>
+		<link rel="stylesheet" href="../../styles.css" />
+	</head>
+	<body>
+		<header>
+			<div>Compteur de clics</div>
+		</header>
+		<main>
+			<div id="container" class="card">
+				<div>
+					<p id="label" style="font-size: 3em">0</p>
+				</div>
 
-      <button id="plus-button">+</button>
-      <button id="min-button">-</button>
-    </div>
-    <script src="index.js"></script>
-  </body>
+				<button id="plus-button" class="btn card">+</button>
+				<button id="min-button" class="btn card">-</button>
+			</div>
+		</main>
+		<footer>
+			<p>
+				&copy; Club Informatique<br />
+				Lycée Ibn Batouta<br />
+				AKLIM
+			</p>
+		</footer>
+		<script src="index.js"></script>
+	</body>
 </html>

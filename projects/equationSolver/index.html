@@ -1,23 +1,36 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <div id="app">
-      <div>
-        <input type="number" id="a-input" />
-        <span>X + </span>
-        <input type="number" id="b-input" />
-        <span> =</span>
-
-        <span>0</span>
-      </div>
-      <div id="result"></div>
-      <div>
-        <div><button id="calc-button">calculer</button></div>
-      </div>
-    </div>
-    <script src="index.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Résoudre une équation</title>
+		<link rel="stylesheet" href="../../styles.css" />
+	</head>
+	<body>
+		<header>
+			<div>Résoudre une équation du premier degré</div>
+		</header>
+		<main>
+			<div id="container" class="card">
+				<div style="margin: 5%">
+					<input type="number" placeholder="a" id="a-input" style="text-align: center; max-width: 100px; font-size: 1.3em" />
+					<span>X + </span>
+					<input type="number" placeholder="b" id="b-input" style="text-align: center; max-width: 100px; font-size: 1.3em" />
+					<span> =</span>
+					<span>0</span>
+				</div>
+				<div id="result" style="font-size: 1.3em"></div>
+				<div style="margin: 5%">
+					<button id="calc-button" class="card btn">calculer</button>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<p>
+				&copy; Club Informatique<br />
+				Lycée Ibn Batouta<br />
+				AKLIM
+			</p>
+		</footer>
+		<script src="index.js"></script>
+	</body>
 </html>
