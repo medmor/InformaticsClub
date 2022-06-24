@@ -19,61 +19,11 @@
 			</div>
 		</header>
 		<div id="editor">
-            <p>Editor content goes here.</p>
-        </div>
+			<p>Simple image:</p>
+		
+		</div>
 
         <script src="dist/bundle.js"></script>
-		<main>
-			<div class="projects-grid">
-				<div class="card btn" onclick="navigateToProject('counter')">
-					<h1>Projet 1</h1>
-					<h2>Compteur de clics</h2>
-				</div>
-				<div class="card btn" onclick="navigateToProject('guess-the-number')">
-					<h1>Projet 2</h1>
-					<h2>Devinez le nombre</h2>
-				</div>
-				<div class="card btn" onclick="navigateToProject('equationSolver')">
-					<h1>Projet 3</h1>
-					<h2>Résoudre une équation du premier degré</h2>
-				</div>
-				<div class="card btn" onclick="navigateToProject('simpleCalc')">
-					<h1>Projet 4</h1>
-					<h2>Calculatrice</h2>
-				</div>
-				<div class="card btn" onclick="navigateToProject('stopwatch')">
-					<h1>Projet 5</h1>
-					<h2>Chronomètre</h2>
-				</div>
-				<div class="card btn" onclick="navigateToProject('matchingGame')">
-					<h1>Projet 6</h1>
-					<h2>Jeu d'association de cartes</h2>
-				</div>
-				<div class="card btn" onclick="navigateToProject('ticTacToe')">
-					<h1>Projet 7</h1>
-					<h2>Tic Tac Toe</h2>
-				</div>
-				<div class="card btn" onclick="navigateToProject('memoryGame')">
-					<h1>Projet 8</h1>
-					<h2>Jeux de mémoire</h2>
-				</div>
-			</div>
-		</main>
-		<footer>
-			<p>
-				&copy; Club Informatique<br />
-				Lycée Ibn Batouta<br />
-				AKLIM
-			</p>
-		</footer>
-		<script>
-			const clickAudio = document.getElementById('clickAudio');
-			function navigateToProject(project) {
-				clickAudio.play();
-				clickAudio.onended = () => {
-					window.location.href = './projects/' + project + '/index.html';
-				};
-			}
-		</script>
+
 	</body>
 </html>
