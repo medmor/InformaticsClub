@@ -1,0 +1,42 @@
+#board {
+    display: inline-block;
+    position: relative;
+    left: 220px;
+    font-size: 32pt;
+    font-weight: bold;
+}
+
+#gameSpace {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    background-color: #f0ee7e;
+    border: solid black 3px;
+}
+
+#ball {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 175px;
+    left: 275px;
+    background-color: #f02137;
+    border-radius: 12.5px;
+}
+
+.racket {
+    width: 10px;
+    height: 120px;
+    position: absolute;
+    top: 140px;
+    border: solid black 1px;
+}
+
+#leftRacket {
+    background-color: green;
+}
+
+#rightRacket {
+    background-color: blue;
+    right: 0;
+}
