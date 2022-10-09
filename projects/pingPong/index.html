@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jeu de Ping Pong</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../styles.css">
 </head>
+
 <body>
-    <button onclick="start()">Start</button>
-    <div id="board">
-        0 : 0
-    </div>
-    <div id="gameSpace">
-        <div id="leftRacket" class="racket"></div>
-        <div id="rightRacket" class="racket"></div>
-        <div id="ball"></div>
-    </div>
+    <header>
+        <div>Jeu de Ping Pong</div>
+    </header>
+    <main style="padding: 3%">
+        <div id="container" style="margin: 1% 0">
+            <button onclick="start()" class="btn card">Start</button>
+            <div id="board">
+                0 : 0
+            </div>
+            <div id="gameSpace">
+                <div id="leftRacket" class="racket"></div>
+                <div id="rightRacket" class="racket"></div>
+                <div id="ball"></div>
+            </div>
+        </div>
+    </main>
     <script src="index.js"></script>
 </body>
+
 </html>

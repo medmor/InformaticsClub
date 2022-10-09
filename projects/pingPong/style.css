@@ -1,42 +1,46 @@
 #board {
-    display: inline-block;
-    position: relative;
-    left: 220px;
+    margin: auto;
     font-size: 32pt;
     font-weight: bold;
+    color: white;
+    display: inline;
 }
 
 #gameSpace {
-    width: 600px;
-    height: 400px;
     position: relative;
-    background-color: #f0ee7e;
-    border: solid black 3px;
+    width: 80vw;
+    height: 40vw;
+    max-width: 600px;
+    max-height: 300px;
+    background-color: black;
+    border: solid rgb(83, 77, 77) 3px;
+    margin: auto;
 }
 
 #ball {
-    width: 25px;
-    height: 25px;
+    width: 2vw;
+    height: 2vw;
+    max-width: 15px;
+    max-height: 15px;
     position: absolute;
-    top: 175px;
-    left: 275px;
-    background-color: #f02137;
+    top: 50%;
+    left: 50%;
+    background-color: white;
     border-radius: 12.5px;
+    box-shadow: 0 0 50px white;
 }
 
 .racket {
-    width: 10px;
-    height: 120px;
+    width: 1vw;
+    height: 12vw;
+    max-width: 10px;
+    max-height: 120px;
     position: absolute;
-    top: 140px;
     border: solid black 1px;
-}
-
-#leftRacket {
-    background-color: green;
+    background-color: orange;
+    box-shadow: 0 0 50px white;
 }
 
 #rightRacket {
-    background-color: blue;
     right: 0;
 }

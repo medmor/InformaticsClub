@@ -1,52 +1,22 @@
 'use strict';
-//create elements for tennis
 
 let leftScore = 0,
     rightScore = 0;
-const gameSpace = document.getElementById("gameSpace"),
-    ball = document.getElementById("ball"),
-    leftRacket = document.getElementById("leftRacket"),
-    rightRacket = document.getElementById("rightRacket"),
-    racketMoveSpeed = 1;
-leftRacket.style.top = "140px"; // needed to change top from js
-rightRacket.style.top = "140px"; // needed to change top from js
+const racketMoveSpeed = 3;
 
 
 
-//get the positions and sizes of the game table and rackets, and then
-//write them into hashes in absolute sizes relative to the entire page
-//including scrolling
-let posGameSpace = gameSpace.getBoundingClientRect(),
-    gameSpaceXY = {
-        left: Math.floor(posGameSpace.left + window.pageXOffset),
-        top: Math.floor(posGameSpace.top + window.pageYOffset),
-        right: Math.floor(posGameSpace.right + window.pageXOffset),
-        bottom: Math.floor(posGameSpace.bottom + window.pageYOffset)
-    };
+let gameSpaceXY = getDimentions(gameSpace.getBoundingClientRect()),
+    leftRacketXY = getDimentions(leftRacket.getBoundingClientRect()),
+    rightRacketXY = getDimentions(rightRacket.getBoundingClientRect());
+leftRacketXY.top -= gameSpaceXY.top;
+rightRacketXY.top -= gameSpaceXY.top;
 
-let posLeftRacket = leftRacket.getBoundingClientRect(),
-    leftRacketXY = {
-        left: Math.floor(posLeftRacket.left + window.pageXOffset),
-        top: Math.floor(posLeftRacket.top + window.pageYOffset),
-        right: Math.floor(posLeftRacket.right + window.pageXOffset),
-        bottom: Math.floor(posLeftRacket.bottom + window.pageYOffset),
-        width: Math.floor(posLeftRacket.width)
-    };
+leftRacket.style.top = leftRacketXY.top + "px"; // needed to change top from js
+rightRacket.style.top = rightRacketXY.top + "px"; // needed to change top from js
 
-let posRightRacket = rightRacket.getBoundingClientRect(),
-    rightRacketXY = {
-        left: Math.floor(posRightRacket.left + window.pageXOffset),
-        top: Math.floor(posRightRacket.top + window.pageYOffset),
-        right: Math.floor(posRightRacket.right + window.pageXOffset),
-        bottom: Math.floor(posRightRacket.bottom + window.pageYOffset),
-        width: Math.floor(posRightRacket.width)
-    };
-
-
-//array of active keyboard events
 let kbdEvents = [];
 
-// hang event handler on keypress
 window.addEventListener('keydown', function (e) {
     switch (e.key) {
         case 'ArrowUp':
@@ -56,140 +26,136 @@ window.addEventListener('keydown', function (e) {
             e.preventDefault();
             break;
     }
-    //record each click in the events array
     kbdEvents[e.key] = true;
 });
 
-// hang the event handler when the keys are released
 window.addEventListener('keyup', function (e) {
-    //remove each click from the events array
     kbdEvents[e.key] = false;
 });
 
-//racket movement function
 function moveRacket() {
     if (kbdEvents['ArrowUp']) {
-        //move right paddle up
-        if (rightRacketXY.top <= gameSpaceXY.top + 8) {
-        } else {
-            rightRacket.style.top = parseInt(rightRacket.style.top) - racketMoveSpeed + 'px';
+        if (rightRacketXY.top > 0) {
+            updateRacketPos(rightRacketXY, rightRacket, -racketMoveSpeed);
         }
     } else if (kbdEvents['ArrowDown']) {
-        //move right paddle down
-        if (rightRacketXY.bottom >= gameSpaceXY.bottom - 8) {
-        } else {
-            rightRacket.style.top = parseInt(rightRacket.style.top) + racketMoveSpeed + 'px';
+        if (rightRacketXY.top < gameSpaceXY.height-rightRacketXY.height -8) {
+            updateRacketPos(rightRacketXY, rightRacket, racketMoveSpeed);
         }
     }
 
     if (kbdEvents['w']) {
-        //moving up the left racket
-        if (leftRacketXY.top <= gameSpaceXY.top + 8) {
-
-        } else {
-            leftRacket.style.top = parseInt(leftRacket.style.top) - racketMoveSpeed + 'px';
+        if (leftRacketXY.top > 0) {
+            updateRacketPos(leftRacketXY, leftRacket, -racketMoveSpeed);
         }
     } else if (kbdEvents['s']) {
-        // move down the left paddle
-        if (leftRacketXY.bottom >= gameSpaceXY.bottom - 8) {
-
-        } else {
-            leftRacket.style.top = parseInt(leftRacket.style.top) + racketMoveSpeed + 'px';
+        if (leftRacketXY.top <  gameSpaceXY.height-leftRacketXY.height -8) {
+            updateRacketPos(leftRacketXY, leftRacket, racketMoveSpeed);
         }
     }
-
-    // overwrite the new received values of the positions of the rackets in hashes
-    posLeftRacket = leftRacket.getBoundingClientRect();
-    leftRacketXY.top = Math.floor(posLeftRacket.top + window.pageYOffset);
-    leftRacketXY.bottom = Math.floor(posLeftRacket.bottom + window.pageYOffset);
-
-    posRightRacket = rightRacket.getBoundingClientRect();
-    rightRacketXY.top = Math.floor(posRightRacket.top + window.pageYOffset);
-    rightRacketXY.bottom = Math.floor(posRightRacket.bottom + window.pageYOffset);
-
 }
 
-// counter of started games
 let counter = 0;
 
-//start the game
 function start() {
-
-    // if the game is not over, then do nothing
-    //otherwise start a new one
     if (counter === (leftScore + rightScore)) {
 
         counter++;
-        ball.style.left = '275px';
-        ball.style.top = '175px';
+
+        let vectorX = 1 - 2 * Math.round(Math.random()),
+            vectorY = 1 - 2 * Math.round(Math.random()),
+            canChangeVextorX = true;
+
+            let indX = Math.floor(Math.random() * 2) + 1,
+            indY = Math.floor(Math.random() * 2) + 1;
+
+        let ballXY = getBallDimetions(ball.getBoundingClientRect(),gameSpaceXY);
+        incrementBallXY(ballXY,1,1);
+        let timer;
+
+        timer = requestAnimationFrame(go);
 
 
-        //random vector direction
-        var x = Math.floor(Math.random() * 2),
-            y = Math.floor(Math.random() * 2),
-            vectorX = 1 - 2 * x,
-            vectorY = 1 - 2 * y;
-        //random coordinate increment factor
-        var indX = Math.floor(Math.random() * 2),
-            indY = Math.floor(Math.random() * 2);
-
-        var timer;
-        //start the game after 1sec
-        setTimeout(function () {
-            timer = requestAnimationFrame(go);
-        },
-            1000);
-
-        // launch the ball
         function go() {
+            let stopGame = false;
             moveRacket();
 
-            ball.style.left = parseInt(ball.style.left) + indX * vectorX + 'px';
-            ball.style.top = parseInt(ball.style.top) + indY * vectorY + 'px';
-
-            //get the values of the positions and sizes of the ball, and then
-            //write them into a hash in absolute sizes relative to the entire page
-            //including scrolling
-            var posBall = ball.getBoundingClientRect(),
-                ballXY = {
-                    left: Math.floor(posBall.left + window.pageXOffset),
-                    top: Math.floor(posBall.top + window.pageYOffset),
-                    right: Math.floor(posBall.right + window.pageXOffset),
-                    bottom: Math.floor(posBall.bottom + window.pageYOffset),
-                    radius: Math.floor(posBall.width) / 2
-                };
-            //if the ball hits the right paddle
-            if ((ballXY.right >= (gameSpaceXY.right - rightRacketXY.width)) &&
-                ((ballXY.top + ballXY.radius) >= rightRacketXY.top) &&
-                ((ballXY.top + ballXY.radius) <= rightRacketXY.bottom)) {
-                vectorX *= -1;
-                timer = requestAnimationFrame(go);
-                //if the ball hits the left paddle
-            } else if ((ballXY.left <= (gameSpaceXY.left + leftRacketXY.width)) &&
-                ((ballXY.top + ballXY.radius) >= leftRacketXY.top) &&
-                ((ballXY.top + ballXY.radius) <= leftRacketXY.bottom)) {
-                vectorX *= -1;
-                timer = requestAnimationFrame(go);
-                //if the ball hits the right wall
-            } else if (ballXY.right >= gameSpaceXY.right) {
-                cancelAnimationFrame(timer);
-                leftScore++;
-                board.innerHTML = leftScore + ':' + rightScore;
-                //if the ball hits the left wall
-            } else if (ballXY.left <= gameSpaceXY.left) {
-                cancelAnimationFrame(timer);
-                rightScore++;
-                board.innerHTML = leftScore + ':' + rightScore;
-            } else if (ballXY.top > gameSpaceXY.top && ballXY.bottom < gameSpaceXY.bottom) {
-                timer = requestAnimationFrame(go);
-                //if the ball hits the top or bottom wall
-            } else if (ballXY.top <= gameSpaceXY.top || ballXY.bottom >= gameSpaceXY.bottom) {
+            incrementBallXY(ballXY, indX * vectorX, indY * vectorY);
+            if (ballXY.right >= gameSpaceXY.width-rightRacketXY.width) {
+                if (((ballXY.top + ballXY.radius) >= rightRacketXY.top) &&
+                    ((ballXY.top + ballXY.radius) <= rightRacketXY.bottom)) {
+                        indX += .1;
+                        if(canChangeVextorX){
+                            changeVectorX();
+                        }
+                } else if (ballXY.right >= gameSpaceXY.width){
+                    stopGame = true;
+                    leftScore++;
+                    board.innerHTML = leftScore + ':' + rightScore;
+                }
+            } else if (ballXY.left <= leftRacketXY.width) {
+                if (((ballXY.top + ballXY.radius) >= leftRacketXY.top) &&
+                    ((ballXY.top + ballXY.radius) <= leftRacketXY.bottom)) {
+                    indX += .1;
+                    if(canChangeVextorX){
+                        changeVectorX();
+                    }
+                } else if (ballXY.left <= 0){
+                    stopGame = true;
+                    rightScore++;
+                    board.innerHTML = leftScore + ':' + rightScore;
+                }
+            } else if (ballXY.top < 0 || ballXY.bottom > gameSpaceXY.height) {
                 vectorY *= -1;
+            }
+
+            if (stopGame) {
+                cancelAnimationFrame(timer);
+            } else {
                 timer = requestAnimationFrame(go);
             }
 
         }
-
+        function changeVectorX(){
+            vectorX *= -1;
+            canChangeVextorX = false;
+            setTimeout(()=>{canChangeVextorX = true}, 100);
+        }
     }
 
+}
+
+function getDimentions(rect) {
+    return {
+        left: Math.floor(rect.left + window.pageXOffset),
+        top: Math.floor(rect.top + window.pageYOffset),
+        right: Math.floor(rect.right + window.pageXOffset),
+        bottom: Math.floor(rect.bottom + window.pageYOffset),
+        width: Math.floor(rect.width),
+        height: Math.floor(rect.height),
+        radius: Math.floor(rect.width) / 2
+    };
+}
+function getBallDimetions(rect, gameS){
+    return {
+        left: Math.floor(rect.left + window.pageXOffset-gameS.left),
+        top: Math.floor(rect.top + window.pageYOffset-gameS.top),
+        right: Math.floor(rect.right + window.pageXOffset-gameS.left),
+        bottom: Math.floor(rect.bottom + window.pageYOffset-gameS.top),
+        width: Math.floor(rect.width),
+        radius: Math.floor(rect.width) / 2
+    };
+}
+function updateRacketPos(racketPos, racketDiv, speed) {
+    racketPos.top += speed;
+    racketPos.bottom += speed;
+    racketDiv.style.top = racketPos.top + "px";
+}
+function incrementBallXY(ballxy, xInc, yInc) {
+    ballxy.left += xInc;
+    ballxy.right += xInc;
+    ballxy.top += yInc;
+    ballxy.bottom += yInc;
+    ball.style.left = ballxy.left + 'px';
+    ball.style.top = ballxy.top + 'px';
 }
