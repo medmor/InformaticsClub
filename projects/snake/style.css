@@ -49,4 +49,5 @@
     border-radius: 25%;
     grid-row-start: 7;
     grid-column: 6;
+    z-index: 100;
 }

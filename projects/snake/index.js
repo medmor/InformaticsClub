@@ -1,6 +1,7 @@
 
 "use strict"
 const boardDivisions = 20;
+let gameLoop = null;
 
 let speed = 5;
 let lastPaintTime = 0;
@@ -12,16 +13,19 @@ let snakeArr = [
     { x: 13, y: 15 }
 ];
 let snakeElements = [];
+let changingDir = false;
 
 
 // Game Functions
 function main(ctime) {
-    window.requestAnimationFrame(main);
+    gameLoop = requestAnimationFrame(main);
     if ((ctime - lastPaintTime) / 1000 < 1 / speed) {
         return;
     }
     lastPaintTime = ctime;
-    gameEngine();
+    changingDir = false;
+    gameLoop();
+    moveSound.currentTime = 0;
     moveSound.play();
 }
 
@@ -36,7 +40,7 @@ function isCollide() {
     return false;
 }
 
-function gameEngine() {
+function gameLoop() {
     if (isCollide()) {
         gameOverSound.play();
         inputDir = { x: 0, y: 0 };
@@ -44,9 +48,11 @@ function gameEngine() {
         board.innerHTML = '<div id="foodElement"></div>';
         food = { x: 6, y: 7 };
         snakeArr = [{ x: 13, y: 15 }];
-        musicSound.play();
+        snakeElements = [];
         score = 0;
         scoreboard.innerHTML = "Score :0";
+        cancelAnimationFrame(gameLoop);
+        gameLoop = null;
     }
 
     if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
@@ -72,22 +78,9 @@ function gameEngine() {
     snakeArr[0].x += inputDir.x;
     snakeArr[0].y += inputDir.y;
 
-    snakeArr.forEach((e, index) => {
-        let snakeElement = snakeElements[index];
-        if (!snakeElement) {
-            snakeElement = document.createElement('div');
-            snakeElements.push(snakeElement);
-        }
-        snakeElement.style.gridRowStart = e.y;
-        snakeElement.style.gridColumnStart = e.x;
-        if (index === 0) {
-            snakeElement.classList.add('head');
-        }
-        else {
-            snakeElement.classList.add('snake');
-        }
-        board.appendChild(snakeElement);
-    })
+    for (let i = 0; i < snakeArr.length; i++) {
+        createSnakeElement(i);
+    }
 }
 
 let hiscore = localStorage.getItem("hiscore");
@@ -100,25 +93,31 @@ else {
     localStorage.setItem("hiscore", hiscore);
 }
 
-main();
+createSnakeElement(0);
+
 window.addEventListener('keydown', e => {
     e.preventDefault();
+
+    if (!gameLoop) {
+        createSnakeElement(0);
+        gameLoop = requestAnimationFrame(main);
+        setDir(0, -1);
+    }
+    if (changingDir)
+        return;
+    changingDir = true;
     switch (e.key) {
         case "ArrowUp":
-            inputDir.x = 0;
-            inputDir.y = -1;
+            setDir(0, -1);
             break;
         case "ArrowDown":
-            inputDir.x = 0;
-            inputDir.y = 1;
+            setDir(0, 1);
             break;
         case "ArrowLeft":
-            inputDir.x = -1;
-            inputDir.y = 0;
+            setDir(-1, 0);
             break;
         case "ArrowRight":
-            inputDir.x = 1;
-            inputDir.y = 0;
+            setDir(1, 0);
             break;
 
         default:
@@ -126,3 +125,25 @@ window.addEventListener('keydown', e => {
     }
 });
 
+function setDir(x, y) {
+    inputDir.x = x;
+    inputDir.y = y;
+    dirSound.currentTime = 0;
+    dirSound.play();
+}
+
+function createSnakeElement(index) {
+    let snakeElement = snakeElements[index];
+    if (!snakeElement) {
+        snakeElement = document.createElement('div');
+        snakeElements.push(snakeElement);
+        if (index == 0) {
+            snakeElement.classList.add('head')
+        } else {
+            snakeElement.classList.add('snake');
+        }
+        board.appendChild(snakeElement);
+    }
+    snakeElement.style.gridRowStart = snakeArr[index].y;
+    snakeElement.style.gridColumnStart = snakeArr[index].x;
+}
