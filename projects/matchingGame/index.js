@@ -14,7 +14,7 @@ function initGrid(cardNumbers = 4) {
 	clickAudio.play();
 	resetTimer();
 	startTimer();
-	sqrtCardNumbers = Math.sqrt(cardNumbers);
+	let sqrtCardNumbers = Math.sqrt(cardNumbers);
 	const cardWidth = containerWidth / sqrtCardNumbers;
 	let gridTemplate = '';
 	for (let i = 0; i < sqrtCardNumbers; i++) {

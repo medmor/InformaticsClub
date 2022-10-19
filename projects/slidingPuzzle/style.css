@@ -1,0 +1,67 @@
+#buttons {
+	width: 250px;
+	display: grid;
+	grid-template-rows: 40px;
+	grid-template-columns: 55px 55px 55px 55px;
+	gap: 12px;
+	margin: 20px auto;
+}
+#game {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px;
+	background-color: rgb(255, 252, 233);
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 20px;
+}
+#container-game {
+	display: grid;
+	background-color: rgb(240, 231, 181);
+	padding: 10px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 15px;
+	margin: auto;
+}
+.card-game {
+	position: relative;
+	text-align: center;
+	background-color: rgb(190, 174, 145);
+	font-weight: bolder;
+	user-select: none;
+	color: white;
+}
+.mask {
+	position: absolute;
+	top: -5%;
+	left: -5%;
+	width: 110%;
+	height: 110%;
+	background-color: rgb(240, 231, 181);
+}
+.hide {
+	display: none;
+}
+
+#info {
+	margin: 10px 0 0 0;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 20px;
+	padding: 5px;
+	background-color: rgb(240, 231, 181);
+}
+button {
+	border: 0;
+	border-radius: 0;
+	background-color: antiquewhite;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 20px;
+}
+button:hover {
+	background-color: beige;
+}
+button:active {
+	background-color: rgb(145, 255, 0);
+}
+@media (max-width: 760px) {
+	main {
+		min-height: 70vh !important;
+	}
+}

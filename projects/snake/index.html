@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de Serpent</title>
+    <link rel="stylesheet" href="../../styles.css"></link>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="foodSound" src="../../assets/audio/coin.wav"></audio>
+    <audio id="gameOverSound" src="../../assets/audio/gameover.wav"></audio>
+    <audio id="moveSound" src="../../assets/audio/move.wav"></audio>
+    <header>
+        <div>jeu de serpent</div>
+    </header>
+    <main>
+        <div class="container-game">
+            <div id="scoreboard">Score: 0</div>
+            <div id="hiscoreBox">Hi Score: 0</div>
+            <div id="board">
+                <div id="foodElement"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>
+            &copy; Club Informatique<br />
+            Lycée Ibn Batouta<br />
+            AKLIM
+        </p>
+    </footer>
+</body>
+<script src="index.js"></script>
+</html>

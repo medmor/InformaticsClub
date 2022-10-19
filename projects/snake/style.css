@@ -1,0 +1,52 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container-game{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#board{
+    border:white 1px solid;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    min-width: 300px;
+    min-height: 300px;
+}
+
+.head{
+    background: linear-gradient(rgb(250, 239, 239), rgb(180, 180, 108));
+    border: 1px solid white;
+    border-radius: 25%;
+}
+
+.snake{
+    background-color: rgb(88, 90, 77);
+    border: 1px solid white;
+    border-radius: 25%;
+}
+
+#scoreboard{
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#hiscoreBox{
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#foodElement{
+    background-color: white;
+    border-radius: 25%;
+    grid-row-start: 7;
+    grid-column: 6;
+}
