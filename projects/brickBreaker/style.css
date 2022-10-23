@@ -1,0 +1,61 @@
+
+#containerGame {
+    height: 400px;
+    width: 80%;
+    overflow: hidden;
+    border: 1px solid white;
+    position: relative;
+    margin: auto;
+}
+
+.info {
+    margin: auto;
+    color: white;
+    text-align: center;
+}
+
+.brick {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 46px;
+    height: 20px;
+    border: 1px solid white;
+    background-color: white;
+}
+
+#gameover {
+    position: absolute;
+    color: black;
+    line-height: 60px;
+    height: 250px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bolder;
+    text-transform: uppercase;
+    background-color: white;
+    width: 100%;
+    cursor: pointer;
+}
+
+#ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 25px;
+    background-size: 20px 20px;
+    top: 70%;
+    left: 50%;
+    display: none;
+}
+
+#paddle {
+    position: absolute;
+    background-color: white;
+    height: 10px;
+    width: 100px;
+    border-radius: 25px;
+    bottom: 10px;
+    left: 50%;
+}

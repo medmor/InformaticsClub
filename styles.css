@@ -20,13 +20,12 @@ header div {
 main {
 	position: relative;
 	min-height: 55vh !important;
-	padding: 5%;
+	padding: 1%;
 	background-color: black;
 }
 .projects-grid {
 	display: grid;
-	grid-template-columns: 31% 31% 31%;
-	grid-gap: 3%;
+	grid-template-columns: 33% 34% 33%;
 }
 #container {
 	position: absolute;

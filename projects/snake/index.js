@@ -1,5 +1,5 @@
-
 "use strict"
+
 const boardDivisions = 20;
 let gameLoop = null;
 
