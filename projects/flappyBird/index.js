@@ -34,11 +34,10 @@ let createPipe = position => {
     let pipe = {};
     pipe.x = position;
     pipe.topPipeHeight = 10 + parseInt(Math.random() * 300);
-    pipe.bottomPipeHeight = 600 - pipe.topPipeHeight - 200;
-    pipe.bottomPipeTop = pipe.topPipeHeight + 100 + parseInt(Math.random() * 100);
+    pipe.bottomPipeHeight = 600 - pipe.topPipeHeight - 100;
+    pipe.bottomPipeTop = pipe.topPipeHeight + 85 + parseInt(Math.random() * 95);
     pipe.birdEntred = false;
     pipe.timer = null;
-
     let topPipe = document.createElement('div');
     topPipe.style.height = pipe.topPipeHeight + 'px';
     topPipe.style.left = pipe.x + 'px';
@@ -99,9 +98,9 @@ function pipesLoop() {
             pipe.topPipe.style.left = pipe.x + 'px';
             pipe.bottomPipe.style.left = pipe.x + 'px';
             if (pipe.x < -52) {
-                pipe.topPipeHeight = 100 + parseInt(Math.random() * 200);
-                pipe.bottomPipeHeight = 600 - pipe.topPipeHeight - 200;
-                pipe.bottomPipeTop = pipe.topPipeHeight + 100 + parseInt(Math.random() * 100);
+                pipe.topPipeHeight = 10 + parseInt(Math.random() * 300);
+                pipe.bottomPipeHeight = 600 - pipe.topPipeHeight - 100;
+                pipe.bottomPipeTop = pipe.topPipeHeight + 85 + parseInt(Math.random() * 95);
 
                 pipe.topPipe.style.height = pipe.topPipeHeight + 'px';
                 pipe.bottomPipe.style.height = pipe.bottomPipeHeight + 'px';
@@ -123,6 +122,7 @@ function pipesLoop() {
                 if (bird.x > pipe.x + 52) {
                     pipe.birdEntred = false;
                     setScore(++score);
+                    coinSound.play();
                 }
             }
             if (scoreDiv.style.opacity > 0)

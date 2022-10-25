@@ -7,10 +7,11 @@ const containerWidth = 250;
 let firstCard = null;
 let secondCard = null;
 let errors = 0;
-
+let cardNumbers = -1;
 initGrid();
 
-function initGrid(cardNumbers = 4) {
+function initGrid(cards = 4) {
+	cardNumbers = cards;
 	clickAudio.play();
 	resetTimer();
 	startTimer();
@@ -60,8 +61,13 @@ function onClick(e) {
 			e.target.classList.add('hide');
 			secondCard = e.target.parentNode;
 			if (firstCard.dataset.index === secondCard.dataset.index) {
+				cardNumbers-=2;
+				tadaAudio.currentTime = 0;
 				tadaAudio.play();
 				reNullCards();
+				if(cardNumbers==0){
+					stopTimer();
+				}
 			} else {
 				wrongAudio.play();
 				const mask1 = firstCard.firstChild.nextSibling;

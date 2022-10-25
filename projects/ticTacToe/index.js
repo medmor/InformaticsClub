@@ -6,7 +6,7 @@ const table = document.getElementById('container-game');
 const rows = table.rows;
 let gameEnded = false;
 
-const board = [
+let board = [
 	['', '', ''],
 	['', '', ''],
 	['', '', ''],
@@ -19,7 +19,6 @@ if (!isPlayerTurn) {
 } else {
 	msg.innerText = 'Veuillez jouer votre tour';
 }
-
 function cellClick(e) {
 	if (!gameEnded) {
 		clickAudio.play();
@@ -32,7 +31,7 @@ function cellClick(e) {
 				board[row][cell] = 'o';
 				if (isWining('o')) {
 					gameEnded = true;
-					msg.innerText = 'Bravo; Vous avez gagné';
+					msg.innerText = "Bravo; Vous avez gagné\ncliquez ici pour rejouer";
 					tadaAudio.play();
 					return;
 				}
@@ -58,7 +57,7 @@ function computerPlay() {
 				isPlayerTurn = true;
 				if (isWining('x')) {
 					gameEnded = true;
-					msg.innerText = 'Dommage; Vous avez perdu';
+					msg.innerText = 'Dommage; Vous avez perdu\ncliquez ici pour rejouer';
 					loseAudio.play();
 					return;
 				}
@@ -83,4 +82,29 @@ function isWining(c) {
 		return true;
 	}
 	return false;
+}
+
+function restart() {
+	if (gameEnded) {
+		gameEnded = false;
+		board = [
+			['', '', ''],
+			['', '', ''],
+			['', '', ''],
+		];
+		for (const row of rows) {
+			const cells = row.cells;
+			for (const cell of cells) {
+				const firstChild = cell.firstChild;
+				firstChild.innerText = '';
+			}
+		}
+		let isPlayerTurn = Math.random() < 0.5 ? true : false;
+		if (!isPlayerTurn) {
+			msg.innerText = "Veuillez attendre le tour de l'ordinateur";
+			computerPlay();
+		} else {
+			msg.innerText = 'Veuillez jouer votre tour';
+		}
+	}
 }

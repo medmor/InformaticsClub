@@ -10,12 +10,13 @@
 </head>
 
 <body>
+    <audio id="moveSound" src="../../assets/audio/move.wav"></audio>
     <header>
         <div>Jeu de Ping Pong</div>
     </header>
     <main style="padding: 3%">
         <div id="container" style="margin: 1% 0">
-            <button onclick="start()" class="btn card">Start</button>
+            <button id="startButton" onclick="start()" class="btn card">Start</button>
             <div id="board">
                 0 : 0
             </div>

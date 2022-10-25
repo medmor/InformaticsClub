@@ -1,3 +1,6 @@
+*{
+	user-select: none;
+}
 #buttons {
 	width: 250px;
 	display: grid;
@@ -27,8 +30,12 @@
 	text-align: center;
 	background-color: rgb(190, 174, 145);
 	font-weight: bolder;
-	user-select: none;
+	font-size: 2em;
 	color: white;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
 }
 .mask {
 	position: absolute;

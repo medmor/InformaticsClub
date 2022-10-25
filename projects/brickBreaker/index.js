@@ -5,7 +5,7 @@ let conDim = containerGame.getBoundingClientRect();
 const player = {
     gameover: true,
     score: 0,
-    lives: 10,
+    lives: 5,
     inPlay: false,
     ballDir: { x: 2, y: -5 },
 };
@@ -130,6 +130,9 @@ function endGame() {
 function stopper() {
     player.inPlay = false;
     player.ballDir = { x: 0, y: -5 };
+    player.score = 0;
+    player.lives = 5;
+    scoreUpdater();
     waitingOnPaddle();
     cancelAnimationFrame(gameLoop);
 }

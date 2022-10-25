@@ -1,7 +1,7 @@
 "use strict"
 
 const boardDivisions = 20;
-let gameLoop = null;
+let gameLoopIndex = null;
 
 let speed = 5;
 let lastPaintTime = 0;
@@ -18,7 +18,7 @@ let changingDir = false;
 
 // Game Functions
 function main(ctime) {
-    gameLoop = requestAnimationFrame(main);
+    gameLoopIndex = requestAnimationFrame(main);
     if ((ctime - lastPaintTime) / 1000 < 1 / speed) {
         return;
     }
@@ -51,8 +51,8 @@ function gameLoop() {
         snakeElements = [];
         score = 0;
         scoreboard.innerHTML = "Score :0";
-        cancelAnimationFrame(gameLoop);
-        gameLoop = null;
+        cancelAnimationFrame(gameLoopIndex);
+        gameLoopIndex = null;
     }
 
     if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
@@ -66,9 +66,10 @@ function gameLoop() {
         scoreboard.innerHTML = "Score :" + score;
         snakeArr.unshift({ x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y });
 
-        food = { x: Math.round(boardDivisions * Math.random()), y: Math.round(boardDivisions * Math.random()) }
+        food = { x: 1 + Math.round((boardDivisions - 2) * Math.random()), y: 1 + Math.round((boardDivisions - 2) * Math.random()) }
         foodElement.style.gridRowStart = food.y;
         foodElement.style.gridColumnStart = food.x;
+
     }
 
     for (let i = snakeArr.length - 2; i >= 0; i--) {
@@ -98,9 +99,9 @@ createSnakeElement(0);
 window.addEventListener('keydown', e => {
     e.preventDefault();
 
-    if (!gameLoop) {
+    if (!gameLoopIndex) {
         createSnakeElement(0);
-        gameLoop = requestAnimationFrame(main);
+        gameLoopIndex = requestAnimationFrame(main);
         setDir(0, -1);
     }
     if (changingDir)
