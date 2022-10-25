@@ -4,9 +4,7 @@ let game = document.getElementById('game');
 let birdElement = document.getElementById('bird');
 let gameStatus = null;
 
-let sky = {
-    x: 0,
-};
+let score = 0;
 
 let bird = {
     speedX: 5,
@@ -35,33 +33,33 @@ document.addEventListener("keyup", (ev) => {
 let createPipe = position => {
     let pipe = {};
     pipe.x = position;
-    pipe.topPipeHeight = 50 + parseInt(Math.random() * 300);
+    pipe.topPipeHeight = 10 + parseInt(Math.random() * 300);
     pipe.bottomPipeHeight = 600 - pipe.topPipeHeight - 200;
     pipe.bottomPipeTop = pipe.topPipeHeight + 100 + parseInt(Math.random() * 100);
+    pipe.birdEntred = false;
     pipe.timer = null;
 
     let topPipe = document.createElement('div');
     topPipe.style.height = pipe.topPipeHeight + 'px';
     topPipe.style.left = pipe.x + 'px';
     topPipe.classList.add("pipe", "pipe-top");
-    game.appendChild(topPipe);
-
+    
     let bottomPipe = document.createElement('div');
     bottomPipe.style.height = pipe.bottomPipeHeight + 'px';
     bottomPipe.style.top = pipe.bottomPipeTop + 'px';
     bottomPipe.style.left = pipe.x + 'px';
     bottomPipe.classList.add("pipe", "pipe-bottom");
-    game.appendChild(bottomPipe);
     pipe.topPipe = topPipe;
     pipe.bottomPipe = bottomPipe;
     pipes.push(pipe);
-
+    
+    pipesDiv.appendChild(topPipe);
+    pipesDiv.appendChild(bottomPipe);
 };
 
 function start() {
-    Array.from(document.getElementsByClassName("pipe")).forEach(p=>{
-        p.parentNode.removeChild(p);
-    })
+    score = 0;
+    pipesDiv.innerHTML = "";
     mask.style.display = "none";
     birdElement.style.top = "100px"
     bird = {
@@ -82,16 +80,12 @@ function start() {
 }
 function gameLoop() {
     gameStatus = setInterval(() => {
-        sky.x -= bird.speedX;
-        game.style.backgroundPositionX = sky.x + 'px';
-
         bird.y += bird.speedY;
         bird.speedY += .8;
         birdElement.style.top = bird.y + 'px';
 
-        if (birdElement.offsetTop <= 0 || birdElement.offsetTop >= 575) {
+        if (birdElement.offsetTop <= 0 || birdElement.offsetTop  >= 575) {
             onLose();
-            birdElement.style.top = 575 + 'px';
         }
     }, 30);
 }
@@ -117,13 +111,22 @@ function pipesLoop() {
                 pipe.x = 1000;
             }
 
-            let topPipeHitCheck = bird.x + 24 > pipe.x && bird.x < pipe.x + 52 && bird.y < pipe.topPipeHeight;
-            let bottomPipeHitCheck = bird.x + 24 > pipe.x && bird.x < pipe.x + 52 && bird.y + 24 > pipe.bottomPipeTop;
-
-            if (topPipeHitCheck || bottomPipeHitCheck) {
-                onLose();
-                clearInterval(pipe.timer);
+            if (!pipe.birdEntred && bird.x + 24 > pipe.x && bird.x < pipe.x + 52) {
+                pipe.birdEntred = true;
             }
+            if (pipe.birdEntred) {
+                if (bird.y < pipe.topPipeHeight || bird.y + 24 > pipe.bottomPipeTop) {
+
+                    onLose();
+                    clearInterval(pipe.timer);
+                }
+                if (bird.x > pipe.x + 52) {
+                    pipe.birdEntred = false;
+                    setScore(++score);
+                }
+            }
+            if (scoreDiv.style.opacity > 0)
+                scoreDiv.style.opacity-=.005;
         }, 30);
     })
 }
@@ -132,4 +135,26 @@ function onLose() {
     clearInterval(gameStatus);
     gameStatus = null;
     mask.style.display = "flex";
+    mask.innerText = "cliquer pour commencer \n Votre Score est : " + score;
+
 }
+
+function setScore(s) {
+    scoreDiv.innerText = s;
+    scoreDiv.style.opacity = 1;
+}
+
+
+// let hrElement;
+// let counter = 100;
+// for (let i = 0; i < counter; i++) {
+//   hrElement = document.createElement("HR");
+  
+//     hrElement.style.left = Math.floor(Math.random() * game.offsetWidth) + "px";
+//     hrElement.style.animationDuration = 0.2 + Math.random()  + "s";
+//     hrElement.style.animationDelay = Math.random() * 5 + "s";
+ 
+//   game.appendChild(hrElement);
+// }
+// console.log(window.innerWidth)
+// console.log(game.offsetWidth)

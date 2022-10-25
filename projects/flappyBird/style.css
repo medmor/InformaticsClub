@@ -18,7 +18,10 @@
     background-color: white;
     cursor: pointer;
     opacity: .8;
-    z-index: 100;
+    font-size: 2em;
+    font-weight: bolder;
+    line-height: 200%;
+    padding: 25% 0;
 }
 
 #bird {
@@ -29,6 +32,21 @@
     left: 100px;
     color: white;
 }
+
+#scoreDiv{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    font-size: 3em;
+    font-weight: bolder;
+    color: orange;
+    text-align: center;
+}
+
 .pipe{
     width : 52px;
     background-color:  white;
@@ -41,3 +59,28 @@
 .pipe-bottom{
     border-radius: 5px 5px 0 0;
 }
+
+
+
+/* hr {
+    width: 50px;
+    border-color: transparent;
+    border-right-color: rgba(255, 255, 255, 0.7);
+    border-right-width: 50px;
+    position: absolute;
+    bottom: 100%;
+    transform-origin: 100% 50%;
+    animation-name: rain;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+@keyframes rain {
+    from {
+      transform: rotate(105deg) translateX(0);
+    } 
+    to {
+      transform: rotate(105deg) translateX(calc(100vh + 20px));
+    }
+  } */
