@@ -4,6 +4,10 @@ class SpriteBase {
     width = 0;
     height = 0;
     sprite = null;
+    isActif;
+
+    onUpdate;
+    onCollision;
 
     constructor(sprite, left, bottom) {
         this.sprite = sprite;
@@ -15,7 +19,6 @@ class SpriteBase {
 
         this.width = dimentions.width;
         this.height = dimentions.height;
-
     }
 
     setBottom(bottom) {
@@ -23,10 +26,35 @@ class SpriteBase {
         this.sprite.style.bottom = this.bottom + "px";
     }
 
-
     setLeft(left) {
         this.left = left;
         this.sprite.style.left = this.left + "px";
     }
 
+    setActif(value){
+        this.isActif = value;
+        if(this.isActif){
+            this.sprite.style.display = "block";
+        }        else{
+            this.sprite.style.display = "none";
+        }
+    }
+
+
+    destroy(removeFromDoom, onDestroyCallback){
+        this.setActif(false);
+        if(removeFromDoom){
+            this.sprite.remove();
+        }
+        if(onDestroyCallback){
+            onDestroyCallback();
+        }
+    }
+
+    registerUpdate(){
+        updateArray.push(this);
+    }
+    registerCollision(){
+        collisionArray.push(this);
+    }
 }

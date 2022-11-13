@@ -4,12 +4,12 @@ class AmmoPool {
     constructor(capacity, sprite) {
         var s;
         for (let i = 0; i < capacity; i++) {
-            if(!sprite){
+            if (!sprite) {
                 s = document.createElement("div");
                 s.classList.add("ammo");
-                
+
                 gameContainer.appendChild(s);
-            }else{
+            } else {
                 s = sprite;
             }
             this.ammos.push(new Ammo(s));
@@ -19,7 +19,6 @@ class AmmoPool {
     getAmmo() {
         for (let i = 0; i < this.ammos.length; i++) {
             if (!this.ammos[i].isActif) {
-                this.ammos[i].isActif = true;
                 return this.ammos[i];
             }
         }
@@ -28,35 +27,42 @@ class AmmoPool {
 
 class Ammo extends SpriteBase {
 
-    isActif = false;
-    timer = null;
-
+    speed = 0;
 
     constructor(sprite) {
-
         super(sprite, undefined, 0);
-        this.sprite.style.display = "none";
-    }
 
-    remove() {
-        this.isActif = false;
-        this.sprite.style.display = "none";
-        this.bottom = 0;
-        this.sprite.style.bottom = this.bottom + "px";
-        clearInterval(this.timer);
-        this.timer = null;
+        this.setActif(false);
+
+        this.registerCollision();
+        this.registerUpdate();
     }
 
     fire(player, speed) {
+        this.isActif = true;
+        this.speed = speed;
         this.left = player.left + 7;
         this.sprite.style.left = this.left + "px";
         this.sprite.style.display = "block";
-        this.timer = setInterval(() => {
-            this.bottom += speed;
+    }
+
+    onUpdate = () => {
+        if (this.isActif) {
+            this.bottom += this.speed;
             this.sprite.style.bottom = this.bottom + "px";
             if (this.bottom > 390) {
-                this.remove();
+                this.destroy(undefined, () => {
+                    this.setBottom(0);
+                });
             }
-        }, 100);
+        }
+    }
+
+    onCollision = (other) => {
+        if(other instanceof Enemy){ 
+            this.destroy(undefined, () => {
+                this.setBottom(0);
+            });
+        }
     }
 }
