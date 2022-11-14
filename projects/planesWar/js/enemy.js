@@ -29,6 +29,14 @@ class EnemyPool {
         }
     }
 
+    destroy() {
+        for (let i = 0; i < this.enemies.length; i++) {
+            this.enemies[i].destroy(true);
+            this.enemies[i] = null;
+        }
+        this.enemies = [];
+    }
+
     onUpdate = () => {
         this.counter++;
         if (this.counter > 10) {
@@ -47,7 +55,7 @@ class Enemy extends SpriteBase {
     rightLimit;
 
     xSpeed = 2;
-    ySpeed = -2;
+    ySpeed = -3;
     initialHeight;
 
     static enemyFalled = "EnemyFalled";
@@ -95,6 +103,9 @@ class Enemy extends SpriteBase {
     onCollision = (other) => {
         this.setActif(false);
         this.setBottom(this.initialHeight);
+        if(other instanceof Ammo){
+            dispatchEvent(events.enemyDestroyed.name);
+        }
     }
 
 }

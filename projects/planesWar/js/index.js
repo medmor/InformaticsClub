@@ -1,11 +1,26 @@
 
+let player, enemyPool;
+
 function start(){
     gameContainer.dimentions = gameContainer.getBoundingClientRect()
     
-    new Player(playerSprite, 150);
+    player = new Player(playerSprite, 150);
     
-    new EnemyPool(20);
-
+    enemyPool = new EnemyPool(20);
 
     mask.style.display = "none";
+    startGameLoop();
 }
+
+function reset(){
+    updateArray = [];
+    collisionArray = [];
+    mask.style.display = "flex";
+}
+
+registerEventCallback(events.playerKilled.name, ()=>{
+    enemyPool.destroy();
+    player.destroy();
+    reset();
+});
+

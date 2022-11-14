@@ -2,6 +2,7 @@ class Player extends SpriteBase {
 
     ammoPool = new AmmoPool(10);
     lives = 5;
+    score = 0;
 
     constructor(sprite, left){
         super(sprite, left);
@@ -11,10 +12,20 @@ class Player extends SpriteBase {
 
         registerEventCallback(events.enemyFall.name, ()=>{
             this.lives--;
+            livesInfoP.innerText = "Lives : " + this.lives;
             if(this.lives == 0){
                 this.setActif(false);
                 dispatchEvent(events.playerKilled.name);
             }
+        });
+        registerEventCallback(events.playerKilled.name, ()=>{
+            for(let i = 0; i < this.ammoPool.ammos.length; i++){
+                this.ammoPool.ammos[i].destroy(true);
+            }
+        });
+        registerEventCallback(events.enemyDestroyed.name, ()=>{
+            this.score++;
+            scoreInfoP.innerText = "Score : " + this.score;
         });
     }
 
@@ -51,6 +62,7 @@ class Player extends SpriteBase {
     onCollision= (other)=>{
         if(other instanceof Enemy){
             this.lives --;
+            livesInfoP.innerText = "Lives : " + this.lives;
             if(this.lives == 0){
                 this.setActif(false);
                 dispatchEvent(events.playerKilled.name);

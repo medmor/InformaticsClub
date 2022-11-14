@@ -1,26 +1,28 @@
 let updateArray = [];
 let collisionArray = [];
 
-let gameLoop = setInterval(() => {
+let gameLoop;
+function startGameLoop() {
+    gameLoop = setInterval(() => {
 
-    //update ammo
-    for (let i = 0; i < updateArray.length; i++) {
-        if (updateArray[i].isActif && updateArray[i].onUpdate)
-            updateArray[i].onUpdate();
-    }
-
-    //collision
-    for (let i = 0; i < collisionArray.length - 1; i++) {
-        for (let j = i + 1; j < collisionArray.length; j++) {
-            if (collisionArray[i].onCollision && collisionArray[j].onCollision) {
-                if (collide(collisionArray[i], collisionArray[j])) {
-                    collisionArray[i].onCollision(collisionArray[j]);
-                    collisionArray[j].onCollision(collisionArray[i]);
+        //update ammo
+        for (let i = 0; i < updateArray.length; i++) {
+            if (updateArray[i].isActif && updateArray[i].onUpdate)
+                updateArray[i].onUpdate();
+        }
+        //collision
+        for (let i = 0; i < collisionArray.length - 1; i++) {
+            for (let j = i + 1; j < collisionArray.length; j++) {
+                if (collisionArray[i].onCollision && collisionArray[j].onCollision) {
+                    if (collide(collisionArray[i], collisionArray[j])) {
+                        collisionArray[i].onCollision(collisionArray[j]);
+                        collisionArray[j].onCollision(collisionArray[i]);
+                    }
                 }
             }
         }
-    }
-}, 100);
+    }, 100);
+}
 
 function collide(sprite1, sprite2) {
     if (!sprite1.isActif || !sprite2.isActif) {
@@ -40,13 +42,17 @@ function collide(sprite1, sprite2) {
 
 //events
 let events = {
-    enemyFall : {
-        name : "enemyFall",
-        callbacks : []
+    enemyFall: {
+        name: "enemyFall",
+        callbacks: []
     },
-    playerKilled:{
-        name : "playerKilled",
-        callbacks : []
+    enemyDestroyed: {
+        name: "enemyDestroyed",
+        callbacks: []
+    },
+    playerKilled: {
+        name: "playerKilled",
+        callbacks: []
     }
 };
 
@@ -78,7 +84,7 @@ addEventListener("keydown", (e) => {
     }
 });
 
-addEventListener("keyup", (e)=>{
+addEventListener("keyup", (e) => {
     if (e.code == "ArrowLeft") {
         leftInput = false;
     } else if (e.code == "ArrowRight") {
@@ -88,6 +94,6 @@ addEventListener("keyup", (e)=>{
     }
 })
 
-registerEventCallback(events.playerKilled.name, ()=>{
+registerEventCallback(events.playerKilled.name, () => {
     clearInterval(gameLoop);
 });
