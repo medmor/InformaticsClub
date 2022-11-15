@@ -45,6 +45,8 @@ class Player extends SpriteBase {
         var ammo = this.ammoPool.getAmmo();
         if(ammo){
             ammo.fire(this, 10);
+            fireSound.currentTime = 0;
+            fireSound.play();
         }
     }
 
@@ -61,6 +63,8 @@ class Player extends SpriteBase {
 
     onCollision= (other)=>{
         if(other instanceof Enemy){
+            explosionSound.currentTime = 0;
+            explosionSound.play();
             this.lives --;
             livesInfoP.innerText = "Lives : " + this.lives;
             if(this.lives == 0){

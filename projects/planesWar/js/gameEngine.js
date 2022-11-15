@@ -75,21 +75,23 @@ let leftInput = false;
 let upInput = false;
 
 addEventListener("keydown", (e) => {
+    e.preventDefault();
     if (e.code == "ArrowLeft") {
         leftInput = true;
     } else if (e.code == "ArrowRight") {
         rightInput = true;
-    } else if (e.code == "ArrowUp") {
+    } else if (e.code == "Space") {
         upInput = true;
     }
 });
 
 addEventListener("keyup", (e) => {
+    e.preventDefault();
     if (e.code == "ArrowLeft") {
         leftInput = false;
     } else if (e.code == "ArrowRight") {
         rightInput = false;
-    } else if (e.code == "ArrowUp") {
+    } else if (e.code == "Space") {
         upInput = false;
     }
 })

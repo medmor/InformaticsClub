@@ -2,6 +2,9 @@
 let player, enemyPool;
 
 function start(){
+    loopSound.play();
+    loopSound.loop = true;
+    
     gameContainer.dimentions = gameContainer.getBoundingClientRect()
     
     player = new Player(playerSprite, 150);
@@ -19,6 +22,8 @@ function reset(){
 }
 
 registerEventCallback(events.playerKilled.name, ()=>{
+    loopSound.pause();
+    loopSound.currentTime = 0;
     enemyPool.destroy();
     player.destroy();
     reset();
