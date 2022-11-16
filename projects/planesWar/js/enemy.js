@@ -64,7 +64,7 @@ class Enemy extends SpriteBase {
         super(sprite);
 
         this.leftLimit = 5 + Math.random() * (gameContainerWidth - 25);
-        this.rightLimit = this.leftLimit + Math.random() * ((gameContainerWidth - 25)-this.leftLimit);
+        this.rightLimit = this.leftLimit + Math.random() * ((gameContainerWidth - 25) - this.leftLimit);
 
         this.setLeft(this.leftLimit + Math.random() * (this.rightLimit - this.leftLimit));
 
@@ -87,6 +87,7 @@ class Enemy extends SpriteBase {
             this.setActif(false);
             this.setBottom(this.initialHeight);
             dispatchEvent(events.enemyFall.name);
+            this.ySpeed -= .1;
             explosionSound.currentTime = 0;
             explosionSound.play();
         }
@@ -105,8 +106,9 @@ class Enemy extends SpriteBase {
     onCollision = (other) => {
         this.setActif(false);
         this.setBottom(this.initialHeight);
-        if(other instanceof Ammo){
+        if (other instanceof Ammo) {
             dispatchEvent(events.enemyDestroyed.name);
+            this.ySpeed -= .1;
             explosionSound.currentTime = 0;
             explosionSound.play();
         }

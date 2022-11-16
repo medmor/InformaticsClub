@@ -75,12 +75,14 @@ let leftInput = false;
 let upInput = false;
 
 addEventListener("keydown", (e) => {
-    e.preventDefault();
     if (e.code == "ArrowLeft") {
+        e.preventDefault();
         leftInput = true;
     } else if (e.code == "ArrowRight") {
+        e.preventDefault();
         rightInput = true;
     } else if (e.code == "Space") {
+        e.preventDefault();
         upInput = true;
     }
 });
@@ -88,10 +90,13 @@ addEventListener("keydown", (e) => {
 addEventListener("keyup", (e) => {
     e.preventDefault();
     if (e.code == "ArrowLeft") {
+        e.preventDefault();
         leftInput = false;
     } else if (e.code == "ArrowRight") {
+        e.preventDefault();
         rightInput = false;
     } else if (e.code == "Space") {
+        e.preventDefault();
         upInput = false;
     }
 })
