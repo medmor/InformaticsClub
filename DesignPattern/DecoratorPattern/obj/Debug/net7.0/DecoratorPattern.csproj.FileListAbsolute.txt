@@ -1,0 +1,15 @@
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/bin/Debug/net7.0/DecoratorPattern
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/bin/Debug/net7.0/DecoratorPattern.deps.json
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/bin/Debug/net7.0/DecoratorPattern.runtimeconfig.json
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/bin/Debug/net7.0/DecoratorPattern.dll
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/bin/Debug/net7.0/DecoratorPattern.pdb
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/DecoratorPattern.csproj.AssemblyReference.cache
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/DecoratorPattern.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/DecoratorPattern.AssemblyInfoInputs.cache
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/DecoratorPattern.AssemblyInfo.cs
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/DecoratorPattern.csproj.CoreCompileInputs.cache
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/DecoratorPattern.dll
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/refint/DecoratorPattern.dll
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/DecoratorPattern.pdb
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/DecoratorPattern.genruntimeconfig.cache
+/workspaces/InformaticsClub/DesignPattern/DecoratorPattern/obj/Debug/net7.0/ref/DecoratorPattern.dll

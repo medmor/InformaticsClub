@@ -1,0 +1,15 @@
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/bin/Debug/net7.0/ChainOfResponsibilityPattern
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/bin/Debug/net7.0/ChainOfResponsibilityPattern.deps.json
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/bin/Debug/net7.0/ChainOfResponsibilityPattern.runtimeconfig.json
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/bin/Debug/net7.0/ChainOfResponsibilityPattern.dll
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/bin/Debug/net7.0/ChainOfResponsibilityPattern.pdb
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/ChainOfResponsibilityPattern.csproj.AssemblyReference.cache
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/ChainOfResponsibilityPattern.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/ChainOfResponsibilityPattern.AssemblyInfoInputs.cache
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/ChainOfResponsibilityPattern.AssemblyInfo.cs
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/ChainOfResponsibilityPattern.csproj.CoreCompileInputs.cache
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/ChainOfResponsibilityPattern.dll
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/refint/ChainOfResponsibilityPattern.dll
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/ChainOfResponsibilityPattern.pdb
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/ChainOfResponsibilityPattern.genruntimeconfig.cache
+/workspaces/InformaticsClub/DesignPattern/ChainOfResponsibilityPattern/obj/Debug/net7.0/ref/ChainOfResponsibilityPattern.dll
