@@ -27,6 +27,6 @@ public abstract class InventoryCommand
     internal abstract bool InternalCommand();
     protected string? GetParameter(string parameterName)
     {
-        return Interface.ReadValue($"Enter {parameterName}:");
+        return Interface.ReadValue($"Enter {parameterName} : ");
     }
 }

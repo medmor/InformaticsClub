@@ -1,6 +1,7 @@
 using FlixOne.InventoryManagement.Models;
-namespace FlixOne.InventoryManagement.Repository;
 using System.Collections.Concurrent;
+
+namespace FlixOne.InventoryManagement.Repository;
 
 
 internal interface IInventoryContext
@@ -12,7 +13,7 @@ internal interface IInventoryContext
 
 internal class InventoryContext : IInventoryContext
 {
-    private static InventoryContext _context;
+    private static InventoryContext? _context;
     private static object _lock = new object();
 
         private readonly IDictionary<string, Book> _books;
