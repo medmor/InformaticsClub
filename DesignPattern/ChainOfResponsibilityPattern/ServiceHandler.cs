@@ -2,7 +2,7 @@ namespace ChainOfResponsibility;
 
 abstract class ServiceHandler
 {
-    public ServiceHandler _nextServiceHandler;
+    public ServiceHandler? _nextServiceHandler;
     public ServiceRequirements _providedServices;
 
     public ServiceHandler(ServiceRequirements providedServices)
