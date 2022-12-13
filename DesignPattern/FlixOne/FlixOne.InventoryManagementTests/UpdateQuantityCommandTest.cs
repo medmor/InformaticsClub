@@ -26,7 +26,7 @@ public class UpdateQuantityCommandtests
             { "Ducks", new Book { Id = 3, Name = "Ducks", Quantity = 12 } }
         });
 
-        var command = new updateQuantityCommand(expectedInterface, context);
+        var command = new UpdateQuantityCommand(expectedInterface, context);
 
         var result = command.RunCommand();
 

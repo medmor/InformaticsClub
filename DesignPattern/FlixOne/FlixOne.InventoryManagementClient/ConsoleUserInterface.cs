@@ -1,6 +1,6 @@
 using FlixOne.InventoryManagement.UserInterface;
 
-namespace FlixOne.InventoryManagement.userInterface;
+namespace FlixOne.InventoryManagementClient;
 
 internal class ConsoleUserInterface : IUserInterface {
     public string? ReadValue(string message){

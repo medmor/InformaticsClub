@@ -3,11 +3,11 @@ using FlixOne.InventoryManagement.UserInterface;
 
 namespace FlixOne.InventoryManagement.Command;
 
-internal class updateQuantityCommand : NonTerminatingCommand, IParameterisedCommand
+internal class UpdateQuantityCommand : NonTerminatingCommand, IParameterisedCommand
 {
 
     private readonly IInventoryContext _context;
-    public updateQuantityCommand(IUserInterface userInterface, IInventoryContext context) : base(userInterface)
+    public UpdateQuantityCommand(IUserInterface userInterface, IInventoryContext context) : base(userInterface)
     {
         _context = context;
     }
