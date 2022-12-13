@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+
+        //for this project
+        "**/bin": true,
+        "**/obj":true,
+        "**/*.csproj":true,
+        "**/*.sln":true,
+        ".gitignore":true,
+        "**/ChainOfResponsibilityPattern":true,
+        "**/DecoratorPattern":true,
+        "**/ObserverPattern":true,
+        "**/TestResults":true
+
+    }
+}
