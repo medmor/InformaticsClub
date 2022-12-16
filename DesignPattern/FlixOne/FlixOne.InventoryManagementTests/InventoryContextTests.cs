@@ -1,10 +1,26 @@
 using FlixOne.InventoryManagement.Repository;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration.Memory;
 
 namespace FlixOne.InventoryManagementTest;
 
 [TestClass]
 public class InventoryContextTests
 {
+    ServiceProvider? Services { get; set; }
+
+    [TestInitialize]
+    public void Startup()
+    {
+        IServiceCollection services = new ServiceCollection();
+        var context = new InventoryContext();
+        services.AddSingleton<IInventoryContext, InventoryContext>();
+        Services = services.BuildServiceProvider();
+
+        var source = new MemoryConfigurationSource();
+        source.InitialData = new Dictionary<string, string?>();
+        var b = new MemoryConfigurationProvider(source);
+    }
     [TestMethod]
     public void MaintainBooks_Successful()
     {
@@ -35,7 +51,7 @@ public class InventoryContextTests
         }
         Task.WaitAll(tasks.ToArray());
         //all quantities should be 0
-        foreach (var book in InventoryContext.Singleton.GetBooks())
+        foreach (var book in Services!.GetService<IInventoryContext>()!.GetBooks())
         {
             Assert.AreEqual(0, book.Quantity);
         }
@@ -46,7 +62,7 @@ public class InventoryContextTests
         return Task.Run(() =>
         {
             //var context = new InventoryContext();
-            Assert.IsTrue(InventoryContext.Singleton.AddBook(book));
+            Assert.IsTrue(Services!.GetService<IInventoryContext>()!.AddBook(book));
         });
     }
 
@@ -55,7 +71,7 @@ public class InventoryContextTests
         return Task.Run(() =>
         {
             //var context = new InventoryContext();
-            Assert.IsTrue(InventoryContext.Singleton.UpdateQuantity(book, quantity));
+            Assert.IsTrue(Services!.GetService<IInventoryContext>()!.UpdateQuantity(book, quantity));
         });
     }
 }

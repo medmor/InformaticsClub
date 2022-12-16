@@ -3,40 +3,13 @@ using System.Collections.Concurrent;
 
 namespace FlixOne.InventoryManagement.Repository;
 
-
-internal interface IInventoryContext
+public class InventoryContext : IInventoryContext
 {
-    Book[] GetBooks();
-    bool AddBook(string name);
-    bool UpdateQuantity(string name, int quantity);
-}
+    public string? Name {get; set;}
+    private readonly object _lock = new Object();
+    private readonly IDictionary<string, Book> _books;
 
-internal class InventoryContext : IInventoryContext
-{
-    private static InventoryContext? _context;
-    private static object _lock = new object();
-
-        private readonly IDictionary<string, Book> _books;
-
-    public static InventoryContext Singleton
-    {
-        get
-        {
-            if (_context == null)
-            {
-                lock (_lock)
-                {
-                    if (_context == null)
-                    {
-                        _context = new InventoryContext();
-                    }
-                }
-            }
-
-            return _context;
-        }
-    }
-    private InventoryContext()
+    public InventoryContext()
     {
         _books = new ConcurrentDictionary<string, Book>();
     }

@@ -12,9 +12,9 @@ interface ICatalogService
 public class CatalogService : ICatalogService
 {
     private readonly IUserInterface _userInterface;
-    private readonly IInventoryCommandFactory _commandFactory;
+    private readonly Func<string, InventoryCommand> _commandFactory;
 
-    public CatalogService(IUserInterface userInterface, IInventoryCommandFactory commandFactory)
+    public CatalogService(IUserInterface userInterface, Func<string, InventoryCommand> commandFactory)
     {
         _userInterface = userInterface;
         _commandFactory = commandFactory;
@@ -24,12 +24,12 @@ public class CatalogService : ICatalogService
     {
         Greeting();
 
-        var response = _commandFactory.GetCommand("?").RunCommand();
+        var response = _commandFactory("?").RunCommand();
 
         while (!response.shouldQuit)
         {
             var input = _userInterface.ReadValue("> ")!.ToLower();
-            var command = _commandFactory.GetCommand(input);
+            var command = _commandFactory(input);
 
             response = command.RunCommand();
 

@@ -1,16 +1,14 @@
+using FlixOne.InventoryManagement.Models;
 namespace FlixOne.InventoryManagement.Repository;
+public interface IInventoryContext : IInventoryReadContext, IInventoryWriteContext
+{
 
+}
 
-public class Inventory {
-    int _quantity;
-    private Object _lock = new Object();
-
-    public void RemoveQuantity(int amount){
-        lock (_lock){
-            if(_quantity - amount < 0){
-                throw new Exception("Cannot remove more than we have!");
-            }
-            _quantity -= amount;
-        }
-    }
+public interface IInventoryReadContext{
+    Book[] GetBooks();
+}
+public interface IInventoryWriteContext {
+    bool AddBook(string name);
+    bool UpdateQuantity(string name, int quantity);
 }
