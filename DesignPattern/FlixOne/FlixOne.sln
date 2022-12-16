@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixOne.InventoryManagement
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixOne.InventoryManagementTests", "Chapter5\FlixOne.InventoryManagementTests\FlixOne.InventoryManagementTests.csproj", "{707F33D0-D945-4366-9958-747B424201FE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter6", "Chapter6", "{DD3509FA-5263-40FC-B451-98547018B799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixOne.Web", "Chapter6\FlixOne.Web\FlixOne.Web.csproj", "{FC464E23-0B53-4FC7-BF9E-6395A371CB97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,12 @@ Global
 		{707F33D0-D945-4366-9958-747B424201FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{707F33D0-D945-4366-9958-747B424201FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{707F33D0-D945-4366-9958-747B424201FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC464E23-0B53-4FC7-BF9E-6395A371CB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC464E23-0B53-4FC7-BF9E-6395A371CB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC464E23-0B53-4FC7-BF9E-6395A371CB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC464E23-0B53-4FC7-BF9E-6395A371CB97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC464E23-0B53-4FC7-BF9E-6395A371CB97} = {DD3509FA-5263-40FC-B451-98547018B799}
 	EndGlobalSection
 EndGlobal
