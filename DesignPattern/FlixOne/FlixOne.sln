@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixOne.InventoryManagement", "FlixOne.InventoryManagement\FlixOne.InventoryManagement.csproj", "{36D82514-A2A8-4AA2-A499-3A7AFCCE2CF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixOne.InventoryManagement", "Chapter5\FlixOne.InventoryManagement\FlixOne.InventoryManagement.csproj", "{36D82514-A2A8-4AA2-A499-3A7AFCCE2CF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixOne.InventoryManagementClient", "FlixOne.InventoryManagementClient\FlixOne.InventoryManagementClient.csproj", "{3458FD7F-CB06-4EE4-914E-034103799E19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixOne.InventoryManagementClient", "Chapter5\FlixOne.InventoryManagementClient\FlixOne.InventoryManagementClient.csproj", "{3458FD7F-CB06-4EE4-914E-034103799E19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixOne.InventoryManagementTests", "FlixOne.InventoryManagementTests\FlixOne.InventoryManagementTests.csproj", "{707F33D0-D945-4366-9958-747B424201FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlixOne.InventoryManagementTests", "Chapter5\FlixOne.InventoryManagementTests\FlixOne.InventoryManagementTests.csproj", "{707F33D0-D945-4366-9958-747B424201FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
