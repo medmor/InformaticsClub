@@ -1,0 +1,36 @@
+@model FlixOne.Web.Models.Category
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="dl-horizontal">
+            @Html.DisplayNameFor(m=>m.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(m=>m.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(m=>m.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(m=>m.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(m=>m.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(m=>m.Description)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-default"> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

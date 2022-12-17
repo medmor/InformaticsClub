@@ -1,7 +1,15 @@
+using FlixOne.Web.Contexts;
+using FlixOne.Web.Persistance;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IInventoryRepository, inventoryRepository>();
+builder.Services.AddDbContext<InventoryContext>(options => 
+    options.UseInMemoryDatabase(databaseName:"InMemoryDb"));
 
 var app = builder.Build();
 
