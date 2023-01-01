@@ -8,8 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IInventoryRepository, inventoryRepository>();
-builder.Services.AddDbContext<InventoryContext>(options => 
-    options.UseInMemoryDatabase(databaseName:"InMemoryDb"));
+builder.Services.AddDbContext<InventoryContext>(options =>
+    options.UseInMemoryDatabase(databaseName: "InMemoryDb"));
+
 
 var app = builder.Build();
 
