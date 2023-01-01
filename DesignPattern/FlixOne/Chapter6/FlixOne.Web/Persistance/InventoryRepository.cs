@@ -28,17 +28,18 @@ public class inventoryRepository : IInventoryRepository
 
     public Category GetCategory(Guid id)
     {
-        return _inventoryContext.Categories.FirstOrDefault(c=>c.Id == id);
+        return _inventoryContext.Categories.FirstOrDefault(c => c.Id == id);
     }
 
     public Product GetProduct(Guid id)
     {
-        return _inventoryContext.Products.Include(p=>p.Category).FirstOrDefault(p=>p.Id==id);
+        return _inventoryContext.Products.Include(p => p.Category).FirstOrDefault(p => p.Id == id);
     }
 
     public IEnumerable<Product> GetProducts()
     {
-        return _inventoryContext.Products.Include(p=>p.Category).ToList();
+        var ps = _inventoryContext.Products.Include(p => p.Category).ToList();
+        return ps;
     }
 
     public bool RemoveCategory(Category category)
